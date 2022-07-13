@@ -1,0 +1,69 @@
+.navbar-nav .nav-link {
+    color: rgba(0,0,0,1) !important;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgba(0,0,0,.5) !important;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+#blogtitle {
+    font-size: 6rem;
+}
+
+@media (min-width: 992px) {
+    #hometext {
+        font-size: 4rem;
+    }
+    #blogdetailtitle {
+        font-size: 5rem;
+    }
+}
+
+.portfolio-url:hover {
+  text-decoration: none !important;
+  color: #706ae4 !important;
+}
+.current_name {
+    font-size: 30px;
+}
+
+.box {
+  animation: 1s show ease;
+}
+
+@keyframes show {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.content-currency {
+    margin-top: 50px;
+}
+
+.item-name {
+    margin-top: 50px;
+    list-style-type: none;
+    columns: 3;
+
+}
+
+.item-info {
+    display: inline-block;
+
+}
+.list-items {
+    columns: 3;
+}
+
+.product-title {;
+    margin: 40px 0 15px;
+    text-align: center;
+}
+
+.history-title {
+    text-align: center;
+}

@@ -1,0 +1,45 @@
+from django.shortcuts import render
+from .models import Project, Product
+import requests
+from datetime import datetime
+
+
+def home(request):
+    projects = Project.objects.all()
+    return render(request, 'portfolio/home.html', {'projects': projects})
+
+
+def currency(request):
+    session = requests.Session()
+    session.headers = {
+        'User Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:97.0) Gecko/20100101 Firefox/97.0',
+        'Accept-Language': 'ru',
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    }
+    cryptos = ['BTC', 'ETH', 'XRP', 'BNB', 'ADA', 'SOL', 'DASH', 'DOGE', 'XMR']
+    dictionary = session.get(f"https://min-api.cryptocompare.com/data/pricemulti?fsyms={','.join(cryptos)}&tsyms=USD").json()
+    values = [dictionary[cryp]['USD'] for cryp in cryptos]
+    diction = dict(zip(cryptos, values))
+    date_time = datetime.now(tz=None).strftime("%b %d %Y %H:%M:%S")
+    return render(request, 'portfolio/currency.html', {'context': diction, 'date': date_time})
+
+
+def price_history(request):
+    session = requests.Session()
+    session.headers = {
+        'User Agent': 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:97.0) Gecko/20100101 Firefox/97.0',
+        'Accept-Language': 'ru',
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+    }
+    products = Product.objects.all()
+    result_dict = {}
+    for product in products:
+        url = f"https://catalog.api.onliner.by/products/{product.code}/prices-history"
+        date_time_dict = session.get(url=url).json()['chart_data']['items'][-15:-1]
+        for item in date_time_dict:
+            if not item['price']:
+                item['price'] = 'Out of stock'
+        result_dict[product.name] = (product.code, product.manufacturer, product.category, date_time_dict)
+    return render(request, 'portfolio/price_history.html', {'context': result_dict})

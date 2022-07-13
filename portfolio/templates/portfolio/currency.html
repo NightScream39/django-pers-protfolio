@@ -1,0 +1,22 @@
+{% extends "portfolio/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <p class="col-md-6 col-sm-5 col-6 text-center content-currency">Сurrent exchange rate on: <b><time>{{ date }}</time></b></p>
+        <div class="row ">
+            <div class="col-md-6 col-sm-5 col-6 text-center">
+                <ul class="list-group">
+                {% for key, value in context.items %}
+                            <p class="current_name list-group-item box"><mark>{{ key }}</mark>: <em>{{ value }}$</em></p>
+                {% endfor %}
+                </ul>
+
+            </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}
