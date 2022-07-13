@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-_5auvd_y!$kmri9g3!7=jrglf=2^nx3ja+2mh8mng7jjg&5ao-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['139.162.172.111']
+ALLOWED_HOSTS = ["139.162.172.111"]
 
 
 # Application definition
@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'blog',
+    'portfolio',
 ]
 
 MIDDLEWARE = [
@@ -49,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'DjangoApp.urls'
+ROOT_URLCONF = 'personal_portfolio.urls'
 
 TEMPLATES = [
     {
@@ -67,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'DjangoApp.wsgi.application'
+WSGI_APPLICATION = 'personal_portfolio.wsgi.application'
 
 
 # Database
