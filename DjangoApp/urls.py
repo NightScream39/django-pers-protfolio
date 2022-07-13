@@ -23,6 +23,6 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('admin/', admin.site.urls),
     path('blog/', include('blog.urls')),
-    path('currency/', views.currency, name='currency'),
-    path('price_history/', views.price_history, name='price_history'),
+    path('currency/', include('personal_portfolio.urls')),
+    path('price_history/', include('personal_portfolio.urls')),
 ]
