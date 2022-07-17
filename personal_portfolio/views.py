@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Project, Product
+from portfolio.models import Project, Product
 import requests
 from datetime import datetime
 
