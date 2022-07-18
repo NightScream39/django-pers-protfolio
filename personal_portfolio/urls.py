@@ -25,4 +25,4 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('currency/', views.currency, name='currency'),
     path('price_history/', views.price_history, name='price_history'),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
